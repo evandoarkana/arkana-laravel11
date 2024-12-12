@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tambah Proyek Baru</title>
     <style>
-        /* Style untuk tema merah neon dan hitam */
+        /* Global Styles */
         body {
-            background-color: #0f0f0f; /* Latar belakang hitam gelap */
-            color: #ffffff; /* Teks putih */
+            background-color: #121212; /* Latar belakang hitam gelap */
+            color: #ff6a00; /* Teks berwarna oranye */
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
@@ -20,7 +20,7 @@
         }
 
         h1 {
-            color: #A10808; /* Judul dengan warna merah neon */
+            color: #ff6a00; /* Judul dengan warna oranye */
             text-align: center;
             font-size: 2.5rem;
             margin-bottom: 20px;
@@ -33,6 +33,7 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
             max-width: 400px;
             width: 90%;
+            border: 2px solid #ff6a00; /* Garis tepi oranye untuk form */
         }
 
         div {
@@ -43,16 +44,16 @@
             display: block;
             margin-bottom: 5px;
             font-weight: bold;
-            color: #ffffff;
+            color: #ff6a00; /* Label dengan warna oranye */
         }
 
         input[type="text"], textarea, input[type="file"] {
             width: 100%;
             padding: 10px;
-            border: 1px solid #555;
+            border: 1px solid #ff6a00; /* Garis tepi oranye untuk input, textarea, dan file */
             border-radius: 4px;
-            background-color: #333;
-            color: #ffffff;
+            background-color: #333; /* Latar belakang hitam untuk input, textarea */
+            color: #ff6a00; /* Teks oranye di dalam input */
             font-size: 1rem;
         }
 
@@ -62,7 +63,7 @@
         }
 
         button {
-            background-color: #A10808; /* Tombol dengan warna merah neon */
+            background-color: #ff6a00; /* Tombol dengan warna oranye */
             color: #ffffff;
             border: none;
             padding: 10px 15px;
@@ -74,11 +75,11 @@
         }
 
         button:hover {
-            background-color: #ff1a1a; /* Warna merah lebih terang saat hover */
+            background-color: #e65c00; /* Hover lebih gelap dari oranye */
         }
 
         a {
-            color: #A10808;
+            color: #ff6a00; /* Link berwarna oranye */
             text-decoration: none;
             font-size: 0.9rem;
             display: inline-block;
@@ -112,7 +113,7 @@
             margin-top: 20px;
             text-align: center;
             font-size: 0.9rem;
-            color: #A10808;
+            color: #ff6a00; /* Footer dengan warna oranye */
         }
     </style>
 </head>

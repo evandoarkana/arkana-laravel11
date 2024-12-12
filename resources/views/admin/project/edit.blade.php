@@ -20,8 +20,8 @@
         /* Body Styling */
         body {
             font-family: 'Poppins', sans-serif;
-            background-color: #f4f6f9;
-            color: #333;
+            background-color: #121212; /* Latar belakang hitam */
+            color: #ff6a00; /* Tulisan oranye */
             padding: 30px;
         }
 
@@ -29,16 +29,17 @@
             text-align: center;
             font-size: 2.5rem;
             margin-bottom: 20px;
-            color: #2c3e50;
+            color: #ff6a00; /* Warna oranye untuk judul */
         }
 
         .container {
             max-width: 800px;
             margin: 0 auto;
             padding: 30px;
-            background-color: white;
+            background-color: #121212; /* Latar belakang hitam untuk kontainer */
             border-radius: 10px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            border: 2px solid #ff6a00; /* Garis tepi oranye untuk container */
         }
 
         .alert {
@@ -61,19 +62,25 @@
         label {
             font-weight: 600;
             font-size: 1.1rem;
+            color: #ff6a00; /* Warna oranye untuk label */
         }
 
         input, textarea {
             padding: 10px;
             font-size: 1rem;
-            border: 1px solid #ddd;
+            border: 2px solid #ff6a00; /* Garis tepi oranye untuk input dan textarea */
             border-radius: 5px;
+            background-color: #121212; /* Latar belakang hitam untuk input dan textarea */
+            color: #ff6a00; /* Tulisan oranye di input dan textarea */
             width: 100%;
             box-sizing: border-box;
         }
 
         input[type="file"] {
             padding: 5px;
+            border: 2px solid #ff6a00; /* Garis tepi oranye untuk input file */
+            background-color: #121212; /* Latar belakang hitam untuk input file */
+            color: #ff6a00; /* Tulisan oranye di input file */
         }
 
         textarea {
@@ -84,7 +91,7 @@
         .btn {
             display: inline-block;
             padding: 12px 20px;
-            background-color: #4CAF50;
+            background-color: #ff6a00; /* Warna oranye untuk tombol */
             color: white;
             border: none;
             border-radius: 5px;
@@ -97,14 +104,15 @@
         }
 
         .btn:hover {
-            background-color: #45a049;
+            background-color: #e65c00; /* Hover lebih gelap dari oranye */
         }
 
         .back-btn {
             display: inline-block;
             padding: 12px 20px;
-            background-color: #3498db;
-            color: white;
+            background-color: #121212;
+            color:#ff6a00;
+            border: 2px solid #ff6a00; /* Garis tepi oranye untuk container */
             border: none;
             border-radius: 5px;
             text-decoration: none;

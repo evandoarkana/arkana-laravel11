@@ -27,22 +27,27 @@
         /* Body styling */
         body {
             font-family: 'Poppins', sans-serif;
-            background-color: #1e272e; /* Dark background */
-            color: #ecf0f1; /* Light text color */
+            background-color: #121212; /* Dark background */
+            color: #ff6a00; /* Light orange text color */
             padding: 40px 0;
         }
 
         h1 {
             text-align: center;
-            color: #f39c12; /* Warm yellow accent */
+            color: #ff6a00; /* Orange text */
             margin-bottom: 30px;
             font-size: 2.5rem;
+            border-bottom: 2px solid #ff6a00; /* Orange bottom border */
+            padding-bottom: 10px;
         }
 
         .container {
             width: 90%;
             max-width: 1200px;
             margin: 0 auto;
+            border: 2px solid #ff6a00; /* Orange border */
+            padding: 20px;
+            border-radius: 8px;
         }
 
         /* Success message */
@@ -90,6 +95,7 @@
             box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Soft, elegant shadow */
             overflow: hidden;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 2px solid #ff6a00; /* Orange border */
         }
 
         .card:hover {
@@ -101,12 +107,12 @@
             width: 100%;
             height: 200px;
             object-fit: cover;
-            border-bottom: 3px solid #2c3e50;
+            border-bottom: 3px solid #ff6a00; /* Orange bottom border for the image */
         }
 
         .card-body {
             padding: 20px;
-            color: #ecf0f1;
+            color: #ff6a00; /* Orange text inside the card */
         }
 
         .card h3 {
@@ -117,13 +123,13 @@
 
         .card p {
             font-size: 1rem;
-            color: #bdc3c7; /* Light grey for description */
+            color: #ff6a00; /* Orange description text */
             margin-bottom: 15px;
         }
 
         .card .tools {
             font-size: 0.9rem;
-            color: #f39c12; /* Accent color for tools */
+            color: #ff6a00; /* Orange text for tools */
             font-weight: bold;
             margin-bottom: 15px;
         }
@@ -175,7 +181,7 @@
             width: 100%;
             height: 200px;
             object-fit: cover;
-            border-bottom: 3px solid #2c3e50;
+            border-bottom: 3px solid #ff6a00; /* Orange bottom border */
             cursor: pointer;
             transition: transform 0.3s ease;
         }
@@ -185,28 +191,28 @@
         }
 
         .back-arrow-btn {
-        padding: 10px;
-        background-color: #00D1FF;
-        color: #fff;
-        border: 2px solid #00D1FF;
-        border-radius: 50%;
-        font-size: 18px;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        margin: 15px;
-        position: absolute;
-        top: 3px; /* Mengatur posisi ke atas */
-        left: 1px; /* Mengatur posisi ke kiri */
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-    }
+            padding: 10px;
+            background-color: #00D1FF;
+            color: #fff;
+            border: 2px solid #00D1FF;
+            border-radius: 50%;
+            font-size: 18px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin: 15px;
+            position: absolute;
+            top: 3px; /* Mengatur posisi ke atas */
+            left: 1px; /* Mengatur posisi ke kiri */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+        }
 
     </style>
 </head>
 <body>
-<a href="{{ route('admin.dashboard') }}">
+    <a href="{{ route('admin.dashboard') }}">
         <button class="back-arrow-btn">
             <i class="fas fa-arrow-left"></i>
         </button>

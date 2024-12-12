@@ -8,8 +8,8 @@
         /* Global Styles */
         body {
             font-family: 'Arial', sans-serif;
-            background-color: #121212; /* Dark background */
-            color: #e0e0e0; /* Light gray text */
+            background-color: #000000; /* Black background */
+            color: #FFA500; /* Orange text */
             margin: 0;
             padding: 0;
             display: flex;
@@ -20,22 +20,22 @@
 
         /* Container Styles */
         .container {
-            background: linear-gradient(135deg, #1e1e1e, #292929); /* Gradient background */
-            border: 1px solid #00e676; /* Bright green border */
+            background: linear-gradient(135deg, #000000, #292929); /* Black gradient background */
+            border: 1px solid #FFA500; /* Orange border */
             border-radius: 15px;
-            box-shadow: 0 4px 20px rgba(0, 255, 85, 0.5); /* Greenish glow */
+            box-shadow: 0 4px 20px rgba(255, 165, 0, 0.5); /* Orange glow */
             padding: 40px;
             max-width: 500px;
             width: 100%;
         }
 
         h1 {
-            color: #00e676; /* Bright green */
+            color: #FFA500; /* Orange */
             font-size: 28px;
             font-weight: 700;
             text-align: center;
             margin-bottom: 30px;
-            text-shadow: 2px 2px 8px rgba(0, 255, 85, 0.7); /* Glow effect */
+            text-shadow: 2px 2px 8px rgba(255, 165, 0, 0.7); /* Glow effect */
         }
 
         /* Form Styles */
@@ -43,31 +43,31 @@
             display: block;
             margin-bottom: 5px;
             font-weight: 600;
-            color: #00e676;
+            color: #FFA500; /* Orange text */
         }
 
         .form-control {
             width: 100%;
             padding: 10px;
             border-radius: 5px;
-            border: 1px solid #00e676; /* Green border */
-            background-color: #121212; /* Match body background */
-            color: #e0e0e0;
+            border: 1px solid #FFA500; /* Orange border */
+            background-color: #000000; /* Match body background */
+            color: #FFA500; /* Orange text */
             font-size: 14px;
             margin-bottom: 20px;
         }
 
         .form-control:focus {
             outline: none;
-            border-color: #00c853; /* Darker green on focus */
-            box-shadow: 0 0 8px rgba(0, 255, 85, 0.8); /* Glow effect */
+            border-color: #FF8C00; /* Darker orange on focus */
+            box-shadow: 0 0 8px rgba(255, 165, 0, 0.8); /* Glow effect */
         }
 
         /* Button Styles */
         .btn-primary {
             width: 100%;
-            background-color: #00e676; /* Green */
-            color: #121212; /* Dark text */
+            background-color: #FFA500; /* Orange */
+            color: #000000; /* Black text */
             padding: 12px;
             font-size: 16px;
             font-weight: bold;
@@ -79,7 +79,7 @@
         }
 
         .btn-primary:hover {
-            background-color: #00c853; /* Darker green on hover */
+            background-color: #FF8C00; /* Darker orange on hover */
             transform: translateY(-2px); /* Lift effect */
         }
     </style>

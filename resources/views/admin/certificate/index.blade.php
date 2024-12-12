@@ -9,60 +9,34 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <style>
-        /* Basic Reset */
         body {
             font-family: 'Roboto', sans-serif;
-            background: linear-gradient(135deg, #4e73df, #1cc88a); /* Gradient Background */
+            background: #000000;
             margin: 0;
             padding: 0;
-            color: #fff;
+            color: #333;
         }
 
-        
-
         .container {
-        max-width: 1200px;
-        margin: 50px auto;
-        padding: 50px;
-        background-color: #2c3e50;
-        border-radius: 20px;
-        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1); /* Bayangan lebih dramatis */
-        overflow: hidden;
-        color: #333;
-        position: relative;
-        z-index: 1;
-        border: 1px solid #ddd; /* Border tipis yang halus */
-    }
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 40px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            border: 2px solid #ff9800;
+        }
 
-    /* Menambahkan efek hover pada container untuk memberikan kesan interaktif */
-    .container:hover {
-        transform: translateY(-5px); /* Efek sedikit terangkat saat hover */
-        box-shadow: 0 30px 80px rgba(0, 0, 0, 0.2); /* Bayangan lebih dalam */
-        transition: all 0.3s ease;
-    }
-
-    /* Efek internal Glow */
-    .container::before {
-        content: '';
-        position: absolute;
-        top: -10px;
-        left: -10px;
-        right: -10px;
-        bottom: -10px;
-        background: rgba(0, 200, 83, 0.1); /* Glow dengan warna hijau */
-        border-radius: 20px;
-        z-index: -1;
-    }
         h1 {
             text-align: center;
-            color: #2196F3;
-            font-size: 40px;
+            color: #ff9800;
+            font-size: 36px;
             font-weight: 700;
             margin-bottom: 30px;
         }
 
         .btn-primary {
-            background-color: #2196F3;
+            background-color: #ff9800;
             color: #fff;
             padding: 12px 25px;
             text-decoration: none;
@@ -73,20 +47,22 @@
             font-weight: 600;
             transition: all 0.3s ease;
             margin-bottom: 20px;
+            border: 2px solid #ff9800;
+        }
+
+        .btn-primary:hover {
+            background-color: #fff;
+            color: #ff9800;
+            border: 2px solid #ff9800;
+            transform: translateY(-2px);
         }
 
         .btn-primary i {
             margin-right: 10px;
         }
 
-        .btn-primary:hover {
-            background-color: #1e88e5;
-            transform: translateY(-2px);
-        }
-
-        /* Table Styling */
         .table-responsive {
-            margin-top: 40px;
+            margin-top: 20px;
             overflow-x: auto;
         }
 
@@ -94,141 +70,106 @@
             width: 100%;
             border-collapse: collapse;
             background-color: #fff;
-            border-radius: 12px;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            border: 1px solid #ffcc80;
         }
 
         th, td {
             padding: 15px;
             text-align: center;
-            border-bottom: 1px solid #ddd;
+            border-bottom: 1px solid #ffe0b2;
         }
 
         th {
-            background-color: #4CAF50;
-            color: white;
+            background-color: #ff9800;
+            color: #fff;
             font-weight: 700;
         }
 
         td {
-            background-color: #f9f9f9;
-            color: #333;
+            color: #ff9800;
         }
 
         tr:hover td {
-            background-color: #e0f2f1;
-            cursor: pointer;
+            background-color: #fff7e6;
         }
 
-        /* Buttons inside table */
         .btn-warning, .btn-danger {
             padding: 8px 15px;
             border-radius: 5px;
             text-decoration: none;
-            transition: background-color 0.3s ease;
             font-weight: 600;
             font-size: 14px;
             display: inline-flex;
             align-items: center;
-        }
-
-        .btn-warning i, .btn-danger i {
-            margin-right: 8px;
+            border: 2px solid transparent;
         }
 
         .btn-warning {
-            background-color: #FFEB3B;
-            color: #333;
+            background-color: #fff;
+            color: #ff9800;
+            border: 2px solid #ff9800;
         }
 
         .btn-warning:hover {
-            background-color: #FF9800;
-        }
-
-        .btn-danger {
-            background-color: #F44336;
+            background-color: #ff9800;
             color: #fff;
         }
 
-        .btn-danger:hover {
-            background-color: #D32F2F;
+        .btn-danger {
+            background-color: #fff;
+            color: #ff5722;
+            border: 2px solid #ff5722;
         }
 
-        /* Style for File Link (View Certificate) */
+        .btn-danger:hover {
+            background-color: #ff5722;
+            color: #fff;
+        }
+
         .file-link {
-            color: #4CAF50;
+            color: #ff9800;
             text-decoration: none;
             font-weight: 500;
             transition: color 0.3s ease;
         }
 
         .file-link:hover {
-            color: #388E3C;
-            transform: translateY(-2px);
-        }
-
-        /* Responsive Styles */
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 28px;
-            }
-
-            th, td {
-                font-size: 12px;
-                padding: 10px;
-            }
-
-            .btn-primary, .btn-warning, .btn-danger {
-                font-size: 12px;
-                padding: 8px 12px;
-            }
-
-            .container {
-                padding: 20px;
-                margin: 20px;
-            }
-        }
-
-        /* Smooth Transition for Button Hover */
-        a, button {
-            transition: transform 0.2s ease;
-        }
-
-        a:hover, button:hover {
-            transform: scale(1.05);
+            color: #f57c00;
         }
 
         .back-arrow-btn {
-        padding: 10px;
-        background-color: #00D1FF;
-        color: #fff;
-        border: 2px solid #00D1FF;
-        border-radius: 50%;
-        font-size: 18px;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        margin: 15px;
-        position: absolute;
-        top: 3px; /* Mengatur posisi ke atas */
-        left: 1px; /* Mengatur posisi ke kiri */
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-    }
-        
+            padding: 10px;
+            background-color: #ff9800;
+            color: #fff;
+            border: 2px solid #ff9800;
+            border-radius: 50%;
+            font-size: 18px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .back-arrow-btn:hover {
+            background-color: #fff;
+            color: #ff9800;
+        }
     </style>
 </head>
 
 <body>
-
-
     <div class="container">
-    <a href="{{ route('admin.dashboard') }}">
-        <button class="back-arrow-btn">
-            <i class="fas fa-arrow-left"></i>
-        </button>
-    </a>
+        <a href="{{ route('admin.dashboard') }}">
+            <button class="back-arrow-btn">
+                <i class="fas fa-arrow-left"></i>
+            </button>
+        </a>
         <h1>Certificate Management</h1>
         <a href="{{ route('admin.certificate.create') }}" class="btn btn-primary">
             <i class="fas fa-plus-circle"></i> Create Certificate
@@ -295,28 +236,26 @@
                 "responsive": true
             });
 
-            // SweetAlert2 Confirmation for Delete
             const deleteForms = document.querySelectorAll('form[method="POST"]');
             deleteForms.forEach(form => {
                 form.addEventListener('submit', function (event) {
-                    event.preventDefault(); // Prevent the default form submission
+                    event.preventDefault();
                     Swal.fire({
                         title: 'Are you sure?',
                         text: "You won't be able to revert this!",
                         icon: 'warning',
                         showCancelButton: true,
-                        confirmButtonColor: '#4CAF50',
-                        cancelButtonColor: '#F44336',
+                        confirmButtonColor: '#ff9800',
+                        cancelButtonColor: '#f44336',
                         confirmButtonText: 'Yes, delete it!'
                     }).then((result) => {
                         if (result.isConfirmed) {
-                            form.submit(); // Submit the form after confirmation
+                            form.submit();
                         }
                     });
                 });
             });
 
-            // SweetAlert2 Success Message after deletion
             @if (session('success'))
             Swal.fire({
                 title: 'Success!',

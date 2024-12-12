@@ -1,475 +1,517 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Roboto:wght@500&display=swap" rel="stylesheet">
-    
-    <style>
-        /* Global Styles */
+	<title>Portfolio evando arkana</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+
+    <link rel="stylesheet"
+        href="{{ asset('template_fe/stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css') }}">
+
+    <link rel="stylesheet" href="{{ asset('template_fe/css/animate.css') }}">
+
+    <link rel="stylesheet" href="{{ asset('template_fe/css/owl.carousel.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('template_fe/css/owl.theme.default.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('template_fe/css/magnific-popup.css') }}">
+
+    <link rel="stylesheet" href="{{ asset('template_fe/css/flaticon.css') }}">
+    <link rel="stylesheet" href="{{ asset('template_fe/css/style.css') }}">
+
+	{{-- style --}}
+	<style>
         body {
-            font-family: 'Poppins', sans-serif;
-            margin: 0;
-            padding: 0;
-            color: #DDD;
-            line-height: 1.6;
-            overflow-x: hidden;
-            padding-top: 60px;
-            
-            /* Background dengan animasi gradient */
-            background: linear-gradient(45deg, #1A1A1A, #333);
-            background-size: 400% 400%; /* Menambah area untuk animasi */
-            animation: gradientBackground 10s ease infinite; /* Animasi berjalan selama 10 detik dan loop terus */
-        }
-
-        @keyframes gradientBackground {
-            0% {
-                background-position: 0% 50%;
-            }
-            50% {
-                background-position: 100% 50%;
-            }
-            100% {
-                background-position: 0% 50%;
-            }
-        }
-
-        h1, h2, h3 {
-            font-family: 'Orbitron', sans-serif;
-            font-weight: 600;
-            color: #A10808;
-            text-shadow: 0 0 10px rgba(161, 8, 8, 0.7), 0 0 30px rgba(161, 8, 8, 0.3);
+            font-family: Arial, sans-serif;
             text-align: center;
-            font-size: 50px;
+            margin: 50px;
         }
-
-        p {
-            font-weight: 300;
-            color: #BBB;
-            text-shadow: 0 0 5px rgba(0, 0, 0, 0.7);
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
         }
-
-        a {
+        .social-icons a {
             text-decoration: none;
-            color: inherit;
+            color: #000;
+            font-size: 2rem;
+            transition: color 0.3s ease;
         }
-
-        /* Header */
-        header {
-            background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent header */
-            color: #A10808;
-            padding: 120px 20px;
-            text-align: center;
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
-            position: relative;
-            z-index: 2;
+        .social-icons a:hover {
+            color: #0077b5;
         }
-
-        header h1 {
-            margin: 0;
-            font-size: 4em;
-            letter-spacing: 5px;
-            text-transform: uppercase;
-            font-weight: 700;
-        }
-
-        header p {
-            font-size: 1.5em;
-            color: #BBB;
-            margin-top: 10px;
-        }
-
-        /* Navbar Styles */
-        nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
-            z-index: 100;
-            padding: 20px 40px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
-        }
-
-        nav ul {
-            list-style: none;
-            display: flex;
-            justify-content: center;
-            margin: 0;
-            padding: 0;
-        }
-
-        nav ul li {
-            margin: 0 25px;
-        }
-
-        nav ul li a {
-            font-size: 1.2em;
-            font-weight: 600;
-            color: #A10808; /* Neon Green color */
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            text-decoration: none;
-            transition: color 0.3s ease, transform 0.3s ease;
-        }
-
-        nav ul li a:hover {
-            color: #A10808; /* Slightly darker green for hover effect */
-            transform: translateY(-2px); /* Subtle lift effect */
-        }
-
-        /* Active Link */
-        nav ul li a.active {
-            color: #00CC66;
-            font-weight: bold;
-        }
-
-        /* About Section */
-        section.about {
-            padding: 80px 20px;
-            background-color: #222;
-            text-align: center;
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
-            position: relative;
-        }
-
-        section.about h2 {
-            font-size: 3em;
-            margin-bottom: 20px;
-            text-transform: uppercase;
-            color: #A10808;
-        }
-
-        section.about p {
-            font-size: 1.2em;
-            color: #AAA;
-            line-height: 1.7;
-        }
-
-        /* Skills Section */
-        section.skills {
-            background-color: #222;
-            padding: 80px 20px;
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
-            position: relative;
-        }
-
-        section.skills h2 {
-            font-size: 2.5em;
-            margin-bottom: 20px;
-        }
-
-        .skills-list {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 40px;
-            margin-top: 40px;
-        }
-
-        .skill {
-            background-color: #333;
-            border-radius: 12px;
-            padding: 30px;
-            box-shadow: 0 6px 30px rgba(0, 0, 0, 0.5);
-            transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease;
-        }
-
-        .skill:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(161, 8, 8, 0.5);
-            filter: brightness(1.1);
-        }
-
-        .skill-name {
-            font-size: 1.5em;
-            color: #A10808;
-            margin-bottom: 15px;
-            text-transform: uppercase;
-        }
-
-        .skill-description {
-            font-size: 1.1em;
-            color: #BBB;
-            line-height: 1.5;
-        }
-
-        /* Card Section */
-        .card-container {
-            display: flex;
-            gap: 30px;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin-top: 40px;
-        }
-
-        .card {
-            background-color: #444;
-            border-radius: 12px;
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
-            width: 280px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            text-align: center;
-            overflow: hidden;
-            margin-bottom: 40px;
-        }
-
-        .card img {
-            width: 100%;
-            height: auto; /* Makes the height of the image adjust proportionally */
-            max-height: 200px; /* Ensures images don't become too large */
-            object-fit: contain; /* Makes sure the aspect ratio is maintained */
-        }
-
-        .card h3 {
-            font-size: 1.5em;
-            color: #A10808;
-            margin: 15px 0;
-            text-shadow: 0 0 5px rgba(161, 8, 8, 0.7);
-        }
-
-        .card p {
-            font-size: 1em;
-            color: #BBB;
-            padding: 0 20px;
-            margin-bottom: 20px;
-        }
-
-        .card a {
-            display: inline-block;
-            padding: 12px 20px;
-            background-color: #A10808;
-            color: #1A1A1A;
-            border-radius: 6px;
-            font-weight: bold;
-            transition: background-color 0.3s ease, transform 0.3s ease;
-        }
-
-        .card a:hover {
-            background-color: #00CC66;
-            transform: scale(1.1);
-        }
-
-        /* Certificate Section */
-        .certificate-card-container {
-            display: flex;
-            gap: 30px;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin-top: 40px;
-        }
-
-        .certificate-card {
-            background-color: #444;
-            border-radius: 12px;
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
-            width: 280px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            text-align: center;
-            overflow: hidden;
-            margin-bottom: 40px;
-        }
-
-        .certificate-card img {
-            width: 100%;
-            height: auto;
-            max-height: 200px;
-            object-fit: contain;
-        }
-
-        .certificate-card h3 {
-            font-size: 1.5em;
-            color: #A10808;
-            margin: 15px 0;
-            text-shadow: 0 0 5px rgba(161, 8, 8, 0.7);
-        }
-
-        .certificate-card p {
-            font-size: 1em;
-            color: #BBB;
-            padding: 0 20px;
-            margin-bottom: 20px;
-        }
-
-        /* Contact Section */
-        section.contact {
-            padding: 80px 20px;
-            background-color: #222;
-            text-align: center;
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
-            position: relative;
-        }
-
-        section.contact h2 {
-            font-size: 2.5em;
-            margin-bottom: 20px;
-            color: #A10808;
-        }
-
-        .contact-card {
-            background-color: #333;
-            border-radius: 12px;
-            padding: 30px;
-            margin-top: 30px;
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
-        }
-
-        .contact-card h3 {
-            font-size: 1.5em;
-            color: A10808;
-            margin-bottom: 10px;
-        }
-
-        .contact-card p {
-            font-size: 1.2em;
-            color: #BBB;
-            margin-bottom: 10px;
-        }
-
-        /* Scroll to Top Button */
-        .scroll-to-top {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background-color: #A10808;
-            color: #1A1A1A;
-            border: none;
-            border-radius: 50%;
-            width: 50px;
-            height: 50px;
-            font-size: 30px;
-            cursor: pointer;
-            display: none;
-            transition: transform 0.3s ease, background-color 0.3s ease;
-        }
-
-        .scroll-to-top:hover {
-            background-color: #A10808;
-            transform: scale(1.1);
-        }
-
-        /* Media Queries for Responsiveness */
-        @media (max-width: 768px) {
-            .card-container,
-            .certificate-card-container {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .skills-list {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        /* background-color: #A10808; */
-        /* color: #0f0f0f; */
     </style>
 </head>
-<body>
+<body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
+	
+	
+	<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light site-navbar-target" id="ftco-navbar">
+		<div class="container">
+			<a class="navbar-brand" href="index.html">ARKANA<span>.</span></a>
+			<button class="navbar-toggler js-fh5co-nav-toggle fh5co-nav-toggle" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="oi oi-menu"></span> Menu
+			</button>
 
-    <header>
-        <h1>MY PORTFOLIO</h1>
-        <p>Web Developer | Programmer</p>
-    </header>
+			<div class="collapse navbar-collapse" id="ftco-nav">
+				<ul class="navbar-nav nav ml-auto">
+					<li class="nav-item"><a href="#home-section" class="nav-link"><span>Home</span></a></li>
+					<li class="nav-item"><a href="#about-section" class="nav-link"><span>About</span></a></li>
+					<li class="nav-item"><a href="#skills-section" class="nav-link"><span>Skills</span></a></li>
+					<li class="nav-item"><a href="#services-section" class="nav-link"><span>Certificate</span></a></li>
+					<li class="nav-item"><a href="#projects-section" class="nav-link"><span>Projects</span></a></li>
+					<li class="nav-item"><a href="#contact-section" class="nav-link"><span>Contact</span></a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+	<section id="home-section" class="hero">
+		<div class="home-slider owl-carousel">
+			<div class="slider-item">
+				<div class="overlay"></div>
+				<div class="container-fluid px-md-0">
+					<div class="row d-md-flex no-gutters slider-text align-items-end justify-content-end" data-scrollax-parent="true">
+						<div class="one-third order-md-last img" style="background-image:url(images/bg_1.jpg);">
+							<div class="overlay"></div>
+							<div class="overlay-1"></div>
+						</div>
+						<div class="one-forth d-flex  align-items-center ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
+							<div class="text">
+								<span class="subheading">Hallo! Nama Saya Arkana</span>
+								<h1 class="mb-4 mt-3">Creative <span>UI/UX</span> Designer &amp; Backend</h1>
+								<p><a href="#" class="btn btn-primary">Hire me</a> <a href="#" class="btn btn-primary btn-outline-primary">Download CV</a></p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
 
-    <nav>
-        <ul>
-            <li><a href="#about">About</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#certificates">Certificates</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-    </nav>
+			<div class="slider-item">
+				<div class="overlay"></div>
+				<div class="container-fluid px-md-0">
+					<div class="row d-flex no-gutters slider-text align-items-end justify-content-end" data-scrollax-parent="true">
+						<div class="one-third order-md-last img" style="background-image:url(images/bg_2.jpg);">
+							<div class="overlay"></div>
+							<div class="overlay-1"></div>
+						</div>
+						<div class="one-forth d-flex align-items-center ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
+							<div class="text">
+								<span class="subheading">We Design &amp; Build Website</span>
+								<h1 class="mb-4 mt-3">Hi, I am <span>Arkana</span> This is my favorite work.</h1>
+								<p><a href="#" class="btn btn-primary">Hire me</a> <a href="#" class="btn btn-primary btn-outline-primary">Download CV</a></p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
 
-    <div id="particles-js"></div>
+	<section class="ftco-counter img bg-light" id="section-counter">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-3 justify-content-center counter-wrap ftco-animate">
+					<div class="block-18 d-flex">
+						<div class="icon d-flex justify-content-center align-items-center">
+							<span class="flaticon-suitcase"></span>
+						</div>
+						<div class="text">
+							<strong class="number" data-number="750">0</strong>
+							<span>Project Complete</span>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-3 justify-content-center counter-wrap ftco-animate">
+					<div class="block-18 d-flex">
+						<div class="icon d-flex justify-content-center align-items-center">
+							<span class="flaticon-loyalty"></span>
+						</div>
+						<div class="text">
+							<strong class="number" data-number="568">0</strong>
+							<span>Happy Clients</span>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-3 justify-content-center counter-wrap ftco-animate">
+					<div class="block-18 d-flex">
+						<div class="icon d-flex justify-content-center align-items-center">
+							<span class="flaticon-coffee"></span>
+						</div>
+						<div class="text">
+							<strong class="number" data-number="478">0</strong>
+							<span>Cups of coffee</span>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-3 justify-content-center counter-wrap ftco-animate">
+					<div class="block-18 d-flex">
+						<div class="icon d-flex justify-content-center align-items-center">
+							<span class="flaticon-calendar"></span>
+						</div>
+						<div class="text">
+							<strong class="number" data-number="780">0</strong>
+							<span>Years experienced</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
 
-    <!-- About Section -->
-    <section id="about" class="about">
-        @foreach($about as $ab)
-        <h2>{{$ab->title}}</h2>
-        <p>{{$ab->content}}</p>
-        @endforeach
-    </section>
+	<section class="ftco-about ftco-section ftco-no-pt ftco-no-pb" id="about-section">
+		<div class="container">
+			<div class="row d-flex no-gutters">
+				<div class="col-md-6 col-lg-5 d-flex">
+					<div class="img-about img d-flex align-items-stretch">
+						<div class="overlay"></div>
+						<div class="img d-flex align-self-stretch align-items-center" style="background-image:url(template_fe/images/1.jpg);">
+						</div>
+					</div>
+				</div>
+				<div class="col-md-6 col-lg-7 pl-md-4 pl-lg-5 py-5">
+					<div class="py-md-5">
+						<div class="row justify-content-start pb-3">
+							<div class="col-md-12 heading-section ftco-animate">
+								@foreach($about as $about)
+								<span class="subheading"></span>
+								<h2 class="mb-4" style="font-size: 34px; text-transform: capitalize;">{{ $about->title }}</h2>
+								<p></p>
 
-    <!-- Skills Section -->
-    <section id="skills" class="skills">
-        <h2>My Skills</h2>
-        <div class="skills-list">
-            @foreach($skill as $sk)
-            <div class="skill">
-                <div class="skill-name">{{$sk->name}}</div>
-                <div class="skill-description">{{$sk->description}}</div>
-            </div>
-            @endforeach
-        </div>
-    </section>
+								<ul class="about-info mt-4 px-md-0 px-2">
+									<li class="d-flex"><span>Name:</span> <span>{{ $about->content }}</span></li>
+									<li class="d-flex"><span>Date of birth:</span> <span>Oktober 16, 2007</span></li>
+									<li class="d-flex"><span>Address:</span> <span>Bogor City</span></li>
+									<li class="d-flex"><span>Zip code:</span> <span>16620</span></li>
+									<li class="d-flex"><span>Email:</span> <span>evandoarkanaa@gmail.com</span></li>
+									<li class="d-flex"><span>Phone: </span> <span>+62 85695212222</span></li>
+								</ul>
+								@endforeach
+							</div>
+							<div class="col-md-12">
+								<div class="my-interest d-lg-flex w-100">
+									<div class="interest-wrap d-flex align-items-center">
+										<div class="icon d-flex align-items-center justify-content-center">
+											<span class="flaticon-listening"></span>
+										</div>
+										<div class="text">Music</div>
+									</div>
+									<div class="interest-wrap d-flex align-items-center">
+										<div class="icon d-flex align-items-center justify-content-center">
+											<span class="flaticon-suitcases"></span>
+										</div>
+										<div class="text">Travel</div>
+									</div>
+									<div class="interest-wrap d-flex align-items-center">
+										<div class="icon d-flex align-items-center justify-content-center">
+											<span class="flaticon-video-player"></span>
+										</div>
+										<div class="text">Movie</div>
+									</div>
+									<div class="interest-wrap d-flex align-items-center">
+										<div class="icon d-flex align-items-center justify-content-center">
+											<span class="flaticon-football"></span>
+										</div>
+										<div class="text">Sports</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	
+	<section class="ftco-section bg-light" id="skills-section">
+		<div class="container">
+			<div class="row justify-content-center pb-5">
+				<div class="col-md-12 heading-section text-center ftco-animate">
+					<span class="subheading">Skills</span>
+					<h2 class="mb-4">My Skills</h2>
+					<p>skills that still need to be honed and developed</p>
+				</div>
+			</div>
+			<div class="row progress-circle mb-5">
+				<div class="col-lg-4 mb-4">
+					<div class="bg-white rounded-lg shadow p-4">
+						<h2 class="h5 font-weight-bold text-center mb-4">CSS</h2>
 
-    <!-- Projects Section -->
-    <section id="projects" class="projects">
-        <h2>My Projects</h2>
-        <div class="card-container">
-            @foreach($project as $pr)
-            <div class="card">
-                <img src="{{asset('storage/'.$pr->image_path)}}" alt="Project Image">
-                <h3>{{$pr->title}}</h3>
-                <p>{{$pr->description}}</p>
-                <p>{{$pr->tools}}</p>
-            </div>
-            @endforeach
-        </div>
-    </section>
+						<!-- Progress bar 1 -->
+						<div class="progress mx-auto" data-value='95'>
+							<span class="progress-left">
+								<span class="progress-bar border-primary"></span>
+							</span>
+							<span class="progress-right">
+								<span class="progress-bar border-primary"></span>
+							</span>
+							<div class="progress-value w-100 h-100 rounded-circle d-flex align-items-center justify-content-center">
+								<div class="h2 font-weight-bold">95<sup class="small">%</sup></div>
+							</div>
+						</div>
+						<!-- END -->
 
-    <!-- Certificates Section -->
-    <section id="certificates" class="certificates">
-        <h2>My Certificates</h2>
-        <div class="certificate-card-container">
-            @foreach($certificate as $cert)
-            <div class="certificate-card">
-                <img src="{{asset('storage/'.$cert->file)}}" alt="Certificate">
-                <!-- <p>Path: {{ asset('storage/'.$cert->file) }}</p> -->
-                <h3>{{$cert->name}}</h3>
-                <p>{{$cert->issued_by}}</p>
-                <p>{{$cert->issued_at}}</p>
-                <p>{{$cert->description}}</p>
-            </div>
-            @endforeach
-        </div>
-    </section>
+						<!-- Demo info -->
+						<div class="row text-center mt-4">
+							<div class="col-6 border-right">
+								<div class="h4 font-weight-bold mb-0">28%</div><span class="small text-gray">Last week</span>
+							</div>
+							<div class="col-6">
+								<div class="h4 font-weight-bold mb-0">60%</div><span class="small text-gray">Last month</span>
+							</div>
+						</div>
+						<!-- END -->
+					</div>
+				</div>
 
-    <!-- Contact Section -->
-    <section id="contact" class="contact">
-        <h2>Contact Me</h2>
-        @foreach($contact as $co)
-        <div class="contact-card">
-            <h3>Chat Me</h3>
-            <p><strong>Name:</strong> {{$co->name}}</p>
-            <p><strong>Email:</strong> {{$co->email}}</p>
-            <p><strong>Phone:</strong> {{$co->notelp}}</p>
-            <p><strong>Message:</strong> {{$co->description}}</p>
-        </div>
-        @endforeach
-    </section>
+				<div class="col-lg-4 mb-4">
+					<div class="bg-white rounded-lg shadow p-4">
+						<h2 class="h5 font-weight-bold text-center mb-4">HTML</h2>
 
-    <!-- Scroll to Top Button -->
-    <button class="scroll-to-top" onclick="window.scrollTo({ top: 0, behavior: 'smooth' })">↑</button>
-    
-    
+						<!-- Progress bar 1 -->
+						<div class="progress mx-auto" data-value='98'>
+							<span class="progress-left">
+								<span class="progress-bar border-primary"></span>
+							</span>
+							<span class="progress-right">
+								<span class="progress-bar border-primary"></span>
+							</span>
+							<div class="progress-value w-100 h-100 rounded-circle d-flex align-items-center justify-content-center">
+								<div class="h2 font-weight-bold">98<sup class="small">%</sup></div>
+							</div>
+						</div>
+						<!-- END -->
 
-    <!-- Particles.js -->
-    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-    <script>
-        // Scroll to Top button visibility
-        window.onscroll = function() {
-            var button = document.querySelector('.scroll-to-top');
-            if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
-                button.style.display = "block";
-            } else {
-                button.style.display = "none";
-            }
-        };
+						<!-- Demo info -->
+						<div class="row text-center mt-4">
+							<div class="col-6 border-right">
+								<div class="h4 font-weight-bold mb-0">28%</div><span class="small text-gray">Last week</span>
+							</div>
+							<div class="col-6">
+								<div class="h4 font-weight-bold mb-0">60%</div><span class="small text-gray">Last month</span>
+							</div>
+						</div>
+						<!-- END -->
+					</div>
+				</div>
 
-    </script>
+				<div class="col-lg-4 mb-4">
+					<div class="bg-white rounded-lg shadow p-4">
+						<h2 class="h5 font-weight-bold text-center mb-4">PHP</h2>
 
-</body>
-</html>
+						<!-- Progress bar 1 -->
+						<div class="progress mx-auto" data-value='68'>
+							<span class="progress-left">
+								<span class="progress-bar border-primary"></span>
+							</span>
+							<span class="progress-right">
+								<span class="progress-bar border-primary"></span>
+							</span>
+							<div class="progress-value w-100 h-100 rounded-circle d-flex align-items-center justify-content-center">
+								<div class="h2 font-weight-bold">68<sup class="small">%</sup></div>
+							</div>
+						</div>
+						<!-- END -->
+
+						<!-- Demo info -->
+						<div class="row text-center mt-4">
+							<div class="col-6 border-right">
+								<div class="h4 font-weight-bold mb-0">28%</div><span class="small text-gray">Last week</span>
+							</div>
+							<div class="col-6">
+								<div class="h4 font-weight-bold mb-0">60%</div><span class="small text-gray">Last month</span>
+							</div>
+						</div>
+						<!-- END -->
+					</div>
+				</div>
+
+		
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="ftco-section" id="services-section">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-md-12 heading-section text-center ftco-animate mb-5">
+					<h2 class="mb-4">CERTIFICATE</h2>
+					<p>several awards from those I participated in</p>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-md-6 col-lg-3">
+					<div class="media block-6 services d-block bg-white rounded-lg shadow ftco-animate">
+						<div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-3d-design"></span></div>
+						<div class="media-body">
+							<h3 class="heading mb-3">Web Design</h3>
+							<p>A small river named Duden flows by their place and supplies.</p>
+						</div>
+					</div> 
+				</div>
+				<div class="col-md-6 col-lg-3">
+					<div class="media block-6 services d-block bg-white rounded-lg shadow ftco-animate">
+						<div class="icon shadow d-flex align-items-center justify-content-center"><span class="flaticon-app-development"></span></div>
+						<div class="media-body">
+							<h3 class="heading mb-3">Web Application</h3>
+							<p>A small river named Duden flows by their place and supplies.</p>
+						</div>
+					</div> 
+				</div>
+				<div class="col-md-6 col-lg-3">
+					<div class="media block-6 services d-block bg-white rounded-lg shadow ftco-animate">
+						<div class="icon shadow d-flex align-items-center justify-content-center"><span class="flaticon-web-programming"></span></div>
+						<div class="media-body">
+							<h3 class="heading mb-3">Web Development</h3>
+							<p>A small river named Duden flows by their place and supplies.</p>
+						</div>
+					</div> 
+				</div>
+				<div class="col-md-6 col-lg-3">
+					<div class="media block-6 services d-block bg-white rounded-lg shadow ftco-animate">
+						<div class="icon shadow d-flex align-items-center justify-content-center"><span class="flaticon-branding"></span></div>
+						<div class="media-body">
+							<h3 class="heading mb-3">Banner Design</h3>
+							<p>A small river named Duden flows by their place and supplies.</p>
+						</div>
+					</div> 
+				</div>
+			</div>
+
+	<section class="ftco-section ftco-project" id="projects-section">
+		<div class="container-fluid px-md-4">
+			<div class="row justify-content-center pb-5">
+				<div class="col-md-12 heading-section text-center ftco-animate">
+					<h2 class="mb-4">PROJEK</h2>
+					<p>Ini beberapa projek yang sudah berhasil saya kembangkan&diselesaikan</p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-3">
+					<div class="project img shadow ftco-animate d-flex justify-content-center align-items-center" style="background-image: url(template_fe/images/projek1.png);">
+						<div class="overlay"></div>
+						<div class="text text-center p-4">
+							<h3><a href="#">TrackingAPP </a></h3>
+							<span>Web Design</span>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-3">
+					<div class="project img shadow ftco-animate d-flex justify-content-center align-items-center" style="background-image: url(template_fe/images/projek2.png);">
+						<div class="overlay"></div>
+						<div class="text text-center p-4">
+							<h3><a href="#">Dashboard &amp; Admin</a></h3>
+							<span>Web Design</span>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-3">
+					<div class="project img shadow ftco-animate d-flex justify-content-center align-items-center" style="background-image: url(template_fe/images/projek3.png);">
+						<div class="overlay"></div>
+						<div class="text text-center p-4">
+							<h3><a href="#">Flutter</a></h3>
+							<span>Web Design</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	
+	
+
+	<footer class="ftco-footer ftco-section">
+		<div class="container">
+		  <div class="row justify-content-between">
+			<div class="col-lg-4 col-md-6 mb-4">
+			  <h3 class="footer-heading">About Me</h3>
+			  <p>Hi, I am Evando Arkana, a passionate I am a student at SMKN 1 Ciomas dedicated to delivering excellent solutions and services to clients. Feel free to reach out to me for collaborations or inquiries.</p>
+			</div>
+	  
+			<div class="col-lg-4 col-md-6 mb-4">
+			  <h3 class="footer-heading">Contact Information</h3>
+			  <ul class="list-unstyled">
+				<li><span class="icon fa fa-map-marker"></span> Bogor City</li>
+				<li><span class="icon fa fa-phone"></span> <a href="tel:+1234567890">+62 85695366102</a></li>
+				<li><span class="icon fa fa-envelope"></span> <a href="mailto:your.email@example.com">evandoarkanaa@gmail.com</a></li>
+			  </ul>
+			</div>
+	  
+			<div class="col-lg-4 col-md-12">
+			  <h3 class="footer-heading">Follow Me</h3>
+			  <ul class="social-links list-inline">
+				<li class="list-inline-item"><a href="#" target="_blank"><i class="fab fa-instagram"></i></a></li>
+				<li class="list-inline-item"><a href="#" target="_blank"><i class="fab fa-tiktok"></i></a></li>
+				<li class="list-inline-item"><a href="#" target="_blank"><i class="fab fa-twitter"></i></a></li>
+			  </ul>
+			</div>
+		  </div>
+	  
+		  <div class="row mt-4">
+			<div class="col-md-12 text-center">
+			  <p class="mb-0">&copy; <script>document.write(new Date().getFullYear());</script> All rights reserved. Designed with <span class="fa fa-heart text-danger"></span> by Evando Arkana</p>
+			</div>
+		  </div>
+		</div>
+	  </footer>
+	  
+	  <style>
+	  .footer-section {
+		background: #343a40;
+		color: #fff;
+		padding: 40px 0;
+	  }
+	  .footer-heading {
+		font-size: 20px;
+		margin-bottom: 20px;
+		color: #ffc107;
+	  }
+	  .footer-section a {
+		color: #ffffff;
+		text-decoration: none;
+	  }
+	  .footer-section a:hover {
+		color: #fff;
+		text-decoration: underline;
+	  }
+	  .social-links li {
+		display: inline-block;
+		margin: 0 10px;
+	  }
+	  .social-links li a {
+		color: #ffc107;
+		font-size: 20px;
+	  }
+	  .social-links li a:hover {
+		color: #fff;
+	  }
+	  </style>
+	  
+		
+
+		<!-- loader -->
+		<div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
+
+		<script src="{{ asset('template_fe/js/jquery.min.js') }}">
+		</script>
+		<script src="{{ asset('template_fe/js/jquery-migrate-3.0.1.min.js') }}"></script>
+		<script src="{{ asset('template_fe/js/popper.min.js') }}"></script>
+		<script src="{{ asset('template_fe/js/bootstrap.min.js') }}"></script>
+		<script src="{{ asset('template_fe/js/jquery.easing.1.3.js') }}"></script>
+		<script src="{{ asset('template_fe/js/jquery.waypoints.min.js') }}"></script>
+		<script src="{{ asset('template_fe/js/jquery.stellar.min.js') }}"></script>
+		<script src="{{ asset('template_fe/js/owl.carousel.min.js') }}"></script>
+		<script src="{{ asset('template_fe/js/jquery.magnific-popup.min.js') }}"></script>
+		<script src="{{ asset('template_fe/js/jquery.animateNumber.min.js') }}"></script>
+		<script src="{{ asset('template_fe/js/scrollax.min.js') }}"></script>
+		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false">
+		</script>
+		<script src="{{ asset('template_fe/js/google-map.js') }}"></script>
+	
+		<script src="{{ asset('template_fe/js/main.js') }}"></script>
+
+	</body>
+	</html>

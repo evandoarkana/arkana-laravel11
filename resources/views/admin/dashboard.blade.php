@@ -3,365 +3,186 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Dashboard</title>
+    <title>Admin Gacor</title>
+    <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
-    <link rel="icon" type="image/x-icon" href="{{ asset('assets/admin.png') }}" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
-
-<style>
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
-    body {
-        font-family: 'Arial', sans-serif;
-        background-color: #A10808;
-        color: #0f0f0f;
-        display: flex;
-        min-height: 100vh;
-        transition: background-color 0.5s ease, color 0.5s ease;
-    }
-/* Transisi halus */
-    .sidebar, .main-content, .header, table, th, td {
-        transition: background-color 0.5s ease, color 0.5s ease;
-    }
-
-    /* Sidebar */
-    .sidebar {
-        width: 250px;
-        background-color: #0f0f0f; /* Warna dasar gelap */
-        color: white;
-        display: flex;
-        flex-direction: column;
-        padding: 20px;
-        position: fixed;
-        top: 0;
-        bottom: 0;
-        left: 0;
-        border-right: 2px solid #4902ab; /* Border berwarna biru terang */
-        box-shadow: 3px 0 10px rgba(0, 0, 0, 0.5);
-    }
-
-    /* Judul sidebar */
-    .sidebar h2 {
-        text-align: center;
-        margin-bottom: 30px;
-        font-size: 22px;
-        color: #4902ba; /* merah terang */
-        text-transform: uppercase;
-        letter-spacing: 1.5px;
-    }
-
-    /* Tautan di sidebar */
-    .sidebar a {
-        display: flex;
-        align-items: center;
-        color: #e0e1dd; /* Warna teks */
-        padding: 12px;
-        text-decoration: none;
-        margin: 10px 0;
-        transition: background 0.3s, color 0.3s;
-        border-radius: 5px;
-        font-size: 16px;
-    }
-
-    /* Ikon di tautan */
-    .sidebar a i {
-        margin-right: 10px;
-        font-size: 1.2rem;
-        color: #4902ba; /* Ikon berwarna biru terang */
-    }
-
-    /* Efek hover pada tautan */
-    .sidebar a:hover {
-        background: #bc9bf1; /* Kembali ke warna hover sebelumnya */
-        color: #4902ba; /* Warna teks saat hover */
-        box-shadow: inset 5px 0 0 #4902ba; /* Efek shadow dalam */
-    }
-
-    /* Main Content dan header bisa tetap sesuai yang sebelumnya */
-    .main-content {
-        /* Tambahkan gaya untuk konten utama jika perlu */
-    }
-    /* Toggle Button */
-    .toggle-btn {
-        padding: 8px;
-        background-color: #bc9bf1;
-        color: #4902ba;
-        border-radius: 50%;
-        width: 35px;
-        height: 35px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
-        transition: background-color 0.3s, transform 0.3s, color 0.3s;
-        box-shadow: 0 4px 10px rgba(76, 201, 240, 0.4);
-        margin-top: -35px;
-        margin-left: -0px;
-    }
-    .toggle-btn i {
-        font-size: 1.2rem;
-        transition: transform 0.5s ease, color 0.5s ease;
-    }
-    .toggle-btn:hover {
-        background-color: #3a86ff;
-        transform: scale(1.05);
-    }
-
-    /* Main Content */
-    .main-content {
-        margin-left: 250px;
-        padding: 20px;
-        width: calc(100% - 250px);
-        display: flex;
-        flex-direction: column;
-        gap: 20px;
-        background-color: #bc9bf1;
-        color: #4902ba;
-    }
-
-    /* Light Mode */
-    .light-mode {
-        background-color: #f0f0f0;
-        color: #1b263b;
-    }
-    .light-mode .sidebar {
-        background-color: #ffffff;
-        color: #bc9bf1;
-        border-right-color: #4902ab;
-    }
-    .light-mode .sidebar a {
-        color: #1b263b;
-    }
-    .light-mode .sidebar a:hover {
-        background-color: #f5f5f5;
-    }
-    .light-mode .main-content {
-        background-color: #f9f9f9;
-    }
-    .light-mode .header {
-        background-color: #e0e1dd;
-        color: #4902ab;
-    }
-    .light-mode table th {
-        background-color: #3a86ff;
-        color: #f9f9f9;
-    }
-
-    .header {
-        background-color: #0f0f0f;
-        color: #4902ab;
-        padding: 15px;
-        text-align: center;
-        font-size: 1.8rem;
-        border: 2px solid #4902ba;
-        border-radius: 8px;
-        margin-bottom: 20px;
-        position: relative;
-        text-transform: uppercase;
-        letter-spacing: 1.2px;
-    }
-.button {
-    padding: 10px 15px;
-    background-color: #4cc9f0;
-    color: #0a192f;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 1rem;
-    text-align: center;
-    text-decoration: none;
-    transition: background-color 0.3s;
-    display: inline-block;
-    position: relative;
-}
-.button:hover {
-    background-color: #3a86ff;
-}
-.button.loading::after {
-    content: '';
-    position: absolute;
-    right: 10px;
-    top: 50%;
-    width: 16px;
-    height: 16px;
-    margin-top: -8px;
-    border: 2px solid white;
-    border-top: 2px solid transparent;
-    border-radius: 50%;
-    animation: spin 1s linear infinite;
-}
-@keyframes spin {
-    0% {
-        transform: rotate(0deg);
-    }
-    100% {
-        transform: rotate(360deg);
-    }
-}
-
-/* Table Style */
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-}
-th, td {
-    border: 2px solid #4cc9f0;
-    padding: 12px 15px;
-    text-align: left;
-    color: #000;
-}
-th {
-    background-color: #bc9bf1;
-    color: #4902ba;
-    text-transform: uppercase;
-}
-tr {
-    background-color: #fff;
-    transition: background-color 0.3s;
-}
-tr:hover {
-    background-color: #415a77;
-}
-/* Table Header Hover Effect */
-th:hover {
-    background-color: #3a86ff;
-}
-/* Responsive */
-@media (max-width: 768px) {
-    .sidebar {
-        width: 200px;
-    }
-    .main-content {
-        margin-left: 200px;
-        width: calc(100% - 200px);
-    }
-}
-@media (max-width: 576px) {
-    .sidebar {
-        width: 100%;
-        position: relative;
-        height: auto;
-    }
-    .main-content {
-        margin-left: 0;
-        width: 100%;
-    }
-}
-
-</style>
-
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #121212;
+            color: #e0e0e0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        .sidebar {
+            width: 200px;
+            background-color: #1a1a1a;
+            color: #f4f4f4;
+            padding: 20px;
+            position: fixed;
+            height: 100%;
+            top: 0;
+            left: 0;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+        }
+        .sidebar h2 {
+            font-size: 1.2rem;
+            text-align: center;
+            margin-bottom: 1rem;
+            color: #ff4500;
+        }
+        .sidebar a {
+            display: block;
+            color: #f4f4f4;
+            text-decoration: none;
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            transition: background 0.3s ease;
+        }
+        .sidebar a:hover {
+            background-color: #333;
+            color: #ff4500;
+        }
+        .main-content {
+            margin-left: 200px;
+            padding: 20px;
+            flex: 1;
+        }
+        .header {
+            margin-bottom: 20px;
+            padding: 10px;
+            background-color: #1a1a1a;
+            color: #ff4500;
+            text-align: center;
+            border-radius: 4px;
+            font-size: 1.5rem;
+        }
+        button {
+            padding: 10px;
+            background-color: #ff4500;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #cc3700;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background-color: #1a1a1a;
+            color: #f4f4f4;
+        }
+        table th, table td {
+            border: 1px solid #444;
+            padding: 8px;
+            text-align: left;
+        }
+        table th {
+            background-color: #333;
+            font-weight: bold;
+        }
+        table tr:hover {
+            background-color: #222;
+        }
+        .card {
+            background-color: #2c2c2c;
+            color: #fff;
+            padding: 15px;
+            border-radius: 5px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .card h3 {
+            margin-bottom: 10px;
+        }
+        @media (max-width: 768px) {
+            .sidebar {
+                width: 100%;
+                height: auto;
+                position: static;
+            }
+            .main-content {
+                margin-left: 0;
+            }
+        }
+    </style>
 </head>
 <body>
-<div class="sidebar">
-    <h2>Admin Panel</h2>
-    <a href="{{ route('admin.about.index') }}"><i class="fas fa-info-circle"></i> About</a>
-    <a href="{{ route('admin.project.index') }}"><i class="fas fa-project-diagram"></i> Project</a>
-    <a href="{{ route('skill.index') }}"><i class="fas fa-pencil-alt"></i> Edit Skill</a>
-    <a href="{{ route('admin.certificate.index') }}"><i class="fas fa-scroll"></i> Certificate</a>
-    <a href="{{ route('admin.contacts.index') }}" class="btn btn-primary"><i class="fas fa-address-book"></i> Lihat Kontak
-</a>
-    <a href="{{ route('login') }}"><i class="fas fa-sign-out-alt"></i> Logout</a>
-</div>
-    
-<div class="main-content">
-    <div class="header">
-        Welcome to Admin Dashboard
-        <div class="toggle-btn" id="theme-toggle">
-            <i class="fas fa-moon"></i>
-        </div>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <h2>Admin Panel</h2>
+        <a href="{{ route('admin.about.index') }}"><i class="fas fa-info-circle"></i> About</a>
+        <a href="{{ route('admin.project.index') }}"><i class="fas fa-project-diagram"></i> Project</a>
+        <a href="{{ route('skill.index') }}"><i class="fas fa-pencil-alt"></i> Edit Skill</a>
+        <a href="{{ route('admin.certificate.index') }}"><i class="fas fa-scroll"></i> Certificate</a>
+        <a href="{{ route('admin.contacts.index') }}" class="btn btn-primary"><i class="fas fa-address-book"></i> Lihat Kontak</a>
+        <a href="{{ route('login') }}"><i class="fas fa-sign-out-alt"></i> Logout</a>
     </div>
 
-<!-- SweetAlert2 CSS and JavaScript -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4/animate.min.css">
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- Main Content -->
+    <div class="main-content">
+        <div class="header">Welcome to the Haunted Admin Dashboard</div>
 
-<script>
-    // Theme Toggle and SweetAlert for Dark/Light Mode
-    document.getElementById('theme-toggle').addEventListener('click', function () {
-        document.body.classList.toggle('light-mode');
-        let icon = this.querySelector('i');
-        
-        // Rotate and toggle icons
-        icon.classList.toggle('fa-moon');
-        icon.classList.toggle('fa-sun');
-        icon.style.transition = 'transform 0.8s ease';
-        icon.style.transform = document.body.classList.contains('light-mode') ? 'rotate(360deg)' : 'rotate(-360deg)';
-        
-        Swal.fire({
-            title: document.body.classList.contains('light-mode') ? 'Light Mode Activated!' : 'Dark Mode Activated!',
-            icon: 'info',
-            iconColor: '#4902ab',
-            confirmButtonText: 'OK',
-            confirmButtonColor: '#bc9bf1',
-            background: document.body.classList.contains('light-mode') ? '#e0e1dd' : '#1b263b',
-            color: document.body.classList.contains('light-mode') ? '#1b263b' : '#e0e1dd',
-            showClass: { popup: 'animate__animated animate__fadeInDown' },
-            hideClass: { popup: 'animate__animated animate__fadeOutUp' },
-            backdrop: 'rgba(0, 0, 0, 0.4)', // Blur effect for focus on popup
-        });
-    });
+        <!-- Statistics Section -->
+        <div style="display: flex; gap: 20px; margin-bottom: 20px;">
+            <div class="card">
+                <h3>Active Users</h3>
+                <p>102</p>
+            </div>
+            <div class="card">
+                <h3>Completed Tasks</h3>
+                <p>58</p>
+            </div>
+            <div class="card">
+                <h3>New Messages</h3>
+                <p>7</p>
+            </div>
+        </div>
 
-    // Show welcome popup on page load
-    window.onload = showWelcomePopup;
+        <!-- Task List -->
+        <div style="margin-bottom: 20px;">
+            <h2 style="color: #fff;">Tasks to Complete</h2>
+            <ul style="list-style: none; padding: 0;">
+                <li style="background: #3a3a3a; color: #fff; margin-bottom: 10px; padding: 10px; border-radius: 5px;">
+                    <input type="checkbox" style="margin-right: 10px;"> Exorcise the Phantom Entry
+                </li>
+                <li style="background: #3a3a3a; color: #fff; margin-bottom: 10px; padding: 10px; border-radius: 5px;">
+                    <input type="checkbox" style="margin-right: 10px;"> Summon Database Entities
+                </li>
+                <li style="background: #3a3a3a; color: #fff; margin-bottom: 10px; padding: 10px; border-radius: 5px;">
+                    <input type="checkbox" style="margin-right: 10px;"> Cast Protection Spells
+                </li>
+            </ul>
+        </div>
 
-    // Function to show row details when table row is clicked
-    document.querySelectorAll('tbody tr').forEach(row => {
-        row.addEventListener('click', () => showRowDetails(row));
-    });
+        <!-- Interactive Buttons -->
+        <div style="margin-bottom: 20px;">
+            <h2 style="color: #fff;">Actions</h2>
+            <button>Summon Report</button>
+            <button>Start Investigation</button>
+        </div>
 
-    // Show Welcome Popup
-    function showWelcomePopup() {
-        Swal.fire({
-            title: 'Welcome Back, Sir!',
-            text: 'You can manage your data from here!',
-            icon: 'success',
-            confirmButtonText: 'Let\'s Go!',
-            background: '#0f0f0f',
-            color: '#4902ab',
-            iconColor: '#4902ab',
-            confirmButtonColor: '#4902ab',
-            backdrop: 'rgba(0, 0, 0, 0.5)',
-            showClass: { popup: 'animate__animated animate__fadeInDown' },
-            hideClass: { popup: 'animate__animated animate__fadeOutUp' },
-            customClass: { popup: 'custom-popup' }
-        });
-    }
-
-    // Function to show row details in a SweetAlert popup
-    function showRowDetails(row) {
-        const rowData = row.querySelectorAll('td');
-        
-        Swal.fire({
-            title: 'Detail: ' + rowData[1].innerText,
-            text: rowData[2].innerText,
-            icon: 'info',
-            background: '#0f0f0f',
-            color: '#4902ab',
-            confirmButtonColor: '#4cc9f0',
-            showClass: { popup: 'animate__animated animate__bounceIn' },
-            hideClass: { popup: 'animate__animated animate__bounceOut' },
-            backdrop: 'rgba(0, 0, 0, 0.4)' // Slightly darker backdrop for detail view
-        });
-    }
-
-    // Add Custom CSS for popup styling
-    const style = document.createElement('style');
-    style.innerHTML = `
-        .custom-popup {
-            border-radius: 15px;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
-            padding: 1em 1.5em;
-            font-family: Arial, sans-serif;
-            font-size: 1rem;
-        }
-    `;
-    document.head.appendChild(style);
-</script>
+        <!-- Activity Chart -->
+        <div style="background: #1d3557; color: #fff; padding: 15px; border-radius: 5px;">
+            <h2>Activity Chart</h2>
+            <p>Data loading...</p>
+            <div style="height: 200px; background: #fff; border-radius: 5px;"></div>
+        </div>
+    </div>
 
 </body>
 </html>

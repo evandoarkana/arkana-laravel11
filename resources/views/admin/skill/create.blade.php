@@ -6,112 +6,95 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Create Skill</title>
     <style>
-body {
-    background-color: #121212; /* Warna latar belakang gelap */
-    color: #ffffff; /* Warna teks putih */
-    font-family: 'Arial', sans-serif; /* Font yang bersih */
-    margin: 0; /* Menghilangkan margin default */
-    padding: 20px; /* Padding keseluruhan */
-}
+        body {
+            background-color: #000; /* Latar belakang hitam */
+            color: #FFA500; /* Teks oranye */
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
 
-.container {
-    max-width: 600px; /* Lebar maksimum kontainer */
-    background-color: #1f1f1f; /* Latar belakang kontainer */
-    border-radius: 10px; /* Sudut melengkung */
-    padding: 40px; /* Padding di dalam kontainer */
-    box-shadow: 0 5px 30px rgba(0, 0, 0, 0.5); /* Bayangan untuk kedalaman */
-    margin: auto; /* Pusatkan kontainer */
-    transition: transform 0.3s; /* Transisi saat hover */
-    padding-left: 40px; /* Geser isi kontainer lebih ke kanan */
-}
+        .container {
+            max-width: 600px;
+            background-color: #111; /* Latar belakang kontainer */
+            border: 2px solid #FFA500; /* Stroke oranye */
+            border-radius: 10px;
+            padding: 30px;
+            margin: auto;
+            box-shadow: 0 4px 20px rgba(255, 165, 0, 0.2); /* Bayangan lembut */
+        }
 
-.container:hover {
-    transform: scale(1.01); /* Efek zoom saat hover */
-}
+        h1 {
+            text-align: center;
+            color: #FFA500; /* Judul oranye */
+            margin-bottom: 20px;
+            font-size: 2em;
+            font-weight: bold;
+        }
 
-h1 {
-    text-align: center; /* Pusatkan teks judul */
-    color: #2196F3; /* Warna biru cyber */
-    margin-bottom: 30px; /* Jarak bawah judul */
-    font-size: 2.5em; /* Ukuran font judul yang lebih besar */
-    font-weight: 600; /* Ketebalan font judul */
-}
+        .form-label {
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #FFA500;
+            display: block;
+        }
 
-.form-label {
-    font-weight: bold; /* Label dengan ketebalan font */
-    margin-bottom: 5px; /* Jarak bawah label */
-    color: #64b5f6; /* Warna biru muda untuk label */
-}
+        .form-control {
+            background-color: #222; /* Latar belakang input */
+            color: #FFA500; /* Teks input */
+            border: 1px solid #FFA500; /* Border input */
+            border-radius: 5px;
+            padding: 10px;
+            width: 100%;
+            margin-bottom: 15px;
+            font-size: 1em;
+            box-sizing: border-box;
+        }
 
-.form-control {
-    background-color: #333; /* Latar belakang input */
-    color: #ffffff; /* Warna teks input */
-    border: 1px solid #64B5F6; /* Warna border input oranye */
-    border-radius: 5px; /* Sudut melengkung input */
-    padding: 12px; /* Padding di dalam input */
-    width: 100%; /* Lebar penuh */
-    margin-bottom: 20px; /* Jarak bawah input */
-    transition: border-color 0.3s; /* Transisi border saat fokus */
-    font-size: 1em; /* Ukuran font input */
-    box-sizing: border-box; /* Menghitung padding dalam lebar */
-    resize: none; /* Mencegah resize textarea */
-}
+        .form-control::placeholder {
+            color: #FFA500; /* Placeholder oranye */
+        }
 
-textarea {
-    width: 100%; /* Pastikan textarea mengisi kontainer */
-    resize: none; /* Mencegah resize */
-}
+        .form-control:focus {
+            border-color: #FF8C00; /* Warna border saat fokus */
+            outline: none;
+            background-color: #333; /* Latar belakang saat fokus */
+        }
 
-.form-control::placeholder {
-    color: #bbb; /* Warna placeholder */
-}
+        .btn-success {
+            background-color: #FFA500; /* Tombol oranye */
+            color: #000; /* Teks hitam */
+            border: none;
+            border-radius: 5px;
+            padding: 12px;
+            width: 100%;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 1em;
+            text-transform: uppercase;
+        }
 
-.form-control:focus {
-    border-color: #42a5f5; /* Warna border saat fokus lebih cerah */
-    outline: none; /* Menghilangkan outline default */
-    background-color: #444; /* Warna latar saat fokus */
-}
+        .btn-success:hover {
+            background-color: #FF8C00; /* Warna tombol saat hover */
+        }
 
-.btn-success {
-    background-color: #2196F3; /* Warna tombol biru cyber */
-    color: #fff; /* Warna teks tombol */
-    border: none; /* Menghilangkan border */
-    border-radius: 5px; /* Sudut melengkung tombol */
-    padding: 15px; /* Padding di dalam tombol */
-    width: 90%; /* Kurangi lebar agar tombol lebih kecil */
-    margin-left: 5%; /* Geser ke kanan */
-    cursor: pointer; /* Kursor pointer saat hover */
-    transition: background-color 0.3s, transform 0.2s; /* Transisi latar belakang dan transformasi */
-    font-weight: bold; /* Teks tombol tebal */
-    font-size: 1.2em; /* Ukuran font tombol */
-    margin-top: 10px; /* Jarak atas tombol */
-}
+        .form-group {
+            margin-bottom: 15px;
+        }
 
-.btn-success:hover {
-    background-color: #1976D2; /* Warna tombol saat hover lebih gelap */
-    transform: translateY(-2px); /* Efek angkat saat hover */
-}
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px;
+            }
 
-.form-group {
-    margin-bottom: 20px; /* Jarak antar grup input */
-}
+            h1 {
+                font-size: 1.8em;
+            }
 
-@media (max-width: 600px) {
-    .container {
-        padding: 20px; /* Padding yang lebih kecil di perangkat kecil */
-        padding-left: 10px; /* Geser sedikit lebih kanan di perangkat kecil */
-    }
-
-    h1 {
-        font-size: 1.8em; /* Ukuran font judul yang lebih kecil di perangkat kecil */
-    }
-
-    .btn-success {
-        padding: 12px; /* Padding tombol yang lebih kecil di perangkat kecil */
-        font-size: 1em; /* Ukuran font tombol yang lebih kecil di perangkat kecil */
-    }
-}
-
+            .btn-success {
+                font-size: 0.9em;
+            }
+        }
     </style>
 </head>
 

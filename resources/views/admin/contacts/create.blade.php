@@ -8,14 +8,15 @@
     <style>
         /* Global Styles */
         body {
-            background: linear-gradient(135deg, #0a192f, #4e5b73);
+            background-color: #000; /* Black background */
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            color: #f1f1f1;
+            color: #FFA500; /* Orange text */
             overflow-x: hidden;
         }
 
         .container {
-            background-color: #1e2a35;
+            background-color: #111; /* Dark background for container */
+            border: 2px solid #FFA500; /* Orange border */
             border-radius: 12px;
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
             max-width: 600px;
@@ -27,32 +28,32 @@
         h1 {
             font-size: 2.5rem;
             font-weight: 700;
-            color: #00ff99; /* Neon Green */
+            color: #FFA500; /* Orange text */
             margin-bottom: 30px;
             text-align: center;
-            text-shadow: 0 0 10px rgba(0, 255, 153, 0.8);
+            text-shadow: 0 0 10px rgba(255, 165, 0, 0.8); /* Orange glow */
         }
 
         /* Form Elements */
         .form-label {
             font-size: 1.1rem;
             font-weight: 600;
-            color: #c9d1d9;
+            color: #FFA500; /* Orange text */
         }
 
         .form-control {
             border-radius: 8px;
             font-size: 1rem;
-            border: 1px solid #4e5b73;
+            border: 1px solid #FFA500; /* Orange border */
             padding: 12px;
-            background-color: #2e3b49;
-            color: #f1f1f1;
+            background-color: #333; /* Dark background */
+            color: #FFA500; /* Orange text */
             transition: all 0.3s ease;
         }
 
         .form-control:focus {
-            border-color: #00ff99; /* Neon Green */
-            box-shadow: 0 0 0 0.2rem rgba(0, 255, 153, 0.5);
+            border-color: #FFA500; /* Orange border on focus */
+            box-shadow: 0 0 0 0.2rem rgba(255, 165, 0, 0.5);
         }
 
         textarea.form-control {
@@ -62,7 +63,7 @@
         .description-label {
             font-size: 1.1rem;
             font-weight: 600;
-            color: #c9d1d9;
+            color: #FFA500; /* Orange text */
         }
 
         /* Button Styles */
@@ -72,25 +73,26 @@
             font-weight: 600;
             font-size: 1.1rem;
             transition: transform 0.3s ease, background-color 0.3s ease;
+            color: #000; /* Black text */
         }
 
         .btn-primary {
-            background-color: #00ff99; /* Neon Green */
+            background-color: #FFA500; /* Orange background */
             border: none;
         }
 
         .btn-primary:hover {
-            background-color: #00cc7a; /* Darker Neon Green */
+            background-color: #e67e22; /* Darker orange on hover */
             transform: scale(1.05);
         }
 
         .btn-secondary {
-            background-color: #4e5b73;
-            border: none;
+            background-color: #333; /* Dark background for secondary button */
+            border: 2px solid #FFA500; /* Orange border */
         }
 
         .btn-secondary:hover {
-            background-color: #394c61;
+            background-color: #444; /* Slightly lighter dark background */
             transform: scale(1.05);
         }
 
@@ -114,26 +116,12 @@
             0% { opacity: 0; transform: translateY(30px); }
             100% { opacity: 1; transform: translateY(0); }
         }
-
-        /* Glow Effect on Inputs */
-        .form-control:focus {
-            outline: none;
-            box-shadow: 0 0 8px rgba(0, 255, 153, 0.6);
-            border-color: #00ff99;
-        }
-
-        /* Glowing Text Effect */
-        .glow-text {
-            color: #00ff99;
-            text-shadow: 0 0 10px rgba(0, 255, 153, 0.8);
-        }
-
     </style>
 </head>
 <body>
 
 <div class="container">
-    <h1 class="glow-text">Tambah Kontak Baru</h1>
+    <h1>Tambah Kontak Baru</h1>
     <form action="{{ route('admin.contacts.store') }}" method="POST">
         @csrf
 
